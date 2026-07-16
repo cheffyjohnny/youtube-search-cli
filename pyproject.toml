@@ -1,0 +1,25 @@
+[project]
+name = "youtube-search-cli"
+version = "1.0.0"
+description = "A CLI that searches YouTube for a keyword and ranks results by view count, descending."
+requires-python = ">=3.9"
+dependencies = [
+    "click>=8.1",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[project.scripts]
+yt-search = "youtube_search.cli:cli"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["youtube_search"]
