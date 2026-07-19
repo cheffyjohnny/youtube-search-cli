@@ -14,10 +14,11 @@ def cli() -> None:
 
 
 @cli.command()
-@click.argument("keyword")
+@click.argument("keyword", nargs=-1, required=True)
 @click.option("--max", "max_results", default=10, show_default=True, help="Number of results to return.")
-def search(keyword: str, max_results: int) -> None:
+def search(keyword: tuple[str, ...], max_results: int) -> None:
     """Search YouTube for KEYWORD, sorted by views descending."""
+    keyword = " ".join(keyword)
     client, is_mock = build_client()
     if is_mock:
         click.echo(
